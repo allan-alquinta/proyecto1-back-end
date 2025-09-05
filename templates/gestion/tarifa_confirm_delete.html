@@ -1,0 +1,11 @@
+{% extends "layout/base.html" %}
+{% block title %}Eliminar Tarifa{% endblock %}
+{% block content %}
+<h2>¿Seguro que deseas eliminar esta tarifa?</h2>
+<p><strong>{{ object.tipo_tarifa }}</strong> — ${{ object.precio }}</p>
+<form method="post">
+  {% csrf_token %}
+  <button type="submit">Sí, eliminar</button>
+  <a href="{% url 'tarifa_list' %}">Cancelar</a>
+</form>
+{% endblock %}
