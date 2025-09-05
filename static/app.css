@@ -1,0 +1,5 @@
+/* Estilos mínimos */
+body { font-family: system-ui, Arial, sans-serif; }
+a { text-decoration: none; }
+table { width: 100%; border-collapse: collapse; }
+th { background: #f3f4f6; text-align: left; }

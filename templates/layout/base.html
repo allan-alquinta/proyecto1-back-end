@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>{% block title %}Proyecto Gestión{% endblock %}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/static/app.css">
+</head>
+<body>
+  <nav style="padding:10px; background:#0e7490; color:white;">
+    <a href="{% url 'home' %}" style="color:white; margin-right:12px;">Inicio</a>
+    <a href="{% url 'cliente_list' %}" style="color:white; margin-right:12px;">Clientes</a>
+    <a href="{% url 'tarifa_list' %}" style="color:white; margin-right:12px;">Tarifas</a>
+    <a href="/admin/" style="color:white;">Admin</a>
+  </nav>
+  <main style="max-width:1000px; margin:20px auto;">
+    {% block content %}{% endblock %}
+  </main>
+</body>
+</html>
