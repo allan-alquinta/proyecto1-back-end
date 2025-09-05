@@ -1,0 +1,23 @@
+{% extends "layout/base.html" %}
+{% block title %}Lecturas{% endblock %}
+{% block content %}
+<h2>Lecturas</h2>
+<p><a href="{% url 'lectura_create' %}">➕ Nueva lectura</a></p>
+<table border="1" cellpadding="6">
+  <tr><th>Medidor</th><th>Fecha</th><th>Lectura</th><th>Consumo</th><th>Acciones</th></tr>
+  {% for l in lecturas %}
+    <tr>
+      <td>{{ l.medidor }}</td>
+      <td>{{ l.fecha_lectura }}</td>
+      <td>{{ l.lectura_actual }}</td>
+      <td>{{ l.consumo_energetico }}</td>
+      <td>
+        <a href="{% url 'lectura_update' l.id %}">Editar</a> |
+        <a href="{% url 'lectura_delete' l.id %}">Eliminar</a>
+      </td>
+    </tr>
+  {% empty %}
+    <tr><td colspan="5">Sin registros.</td></tr>
+  {% endfor %}
+</table>
+{% endblock %}

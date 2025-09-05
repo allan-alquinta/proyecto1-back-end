@@ -1,0 +1,24 @@
+{% extends "layout/base.html" %}
+{% block title %}Boletas{% endblock %}
+{% block content %}
+<h2>Boletas</h2>
+<p><a href="{% url 'boleta_create' %}">➕ Nueva boleta</a></p>
+<table border="1" cellpadding="6">
+  <tr><th>Lectura</th><th>Emisión</th><th>Vencimiento</th><th>Monto</th><th>Estado</th><th>Acciones</th></tr>
+  {% for b in boletas %}
+    <tr>
+      <td>{{ b.lectura }}</td>
+      <td>{{ b.fecha_emision }}</td>
+      <td>{{ b.fecha_vencimiento }}</td>
+      <td>${{ b.monto_total }}</td>
+      <td>{{ b.estado }}</td>
+      <td>
+        <a href="{% url 'boleta_update' b.id %}">Editar</a> |
+        <a href="{% url 'boleta_delete' b.id %}">Eliminar</a>
+      </td>
+    </tr>
+  {% empty %}
+    <tr><td colspan="6">Sin registros.</td></tr>
+  {% endfor %}
+</table>
+{% endblock %}

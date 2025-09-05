@@ -1,6 +1,9 @@
 from django.views.generic import TemplateView, ListView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
-from .models import Cliente, Tarifa, Contrato, Medidor
+from .models import (
+    Cliente, Tarifa, Contrato, Medidor,
+    Lectura, Boleta
+)
 
 class HomeView(TemplateView):
     template_name = 'layout/home.html'
@@ -96,3 +99,49 @@ class MedidorDeleteView(DeleteView):
     model = Medidor
     template_name = 'gestion/medidor_confirm_delete.html'
     success_url = reverse_lazy('medidor_list')
+
+# ====== Lecturas ======
+class LecturaListView(ListView):
+    model = Lectura
+    template_name = 'gestion/lectura_list.html'
+    context_object_name = 'lecturas'
+
+class LecturaCreateView(CreateView):
+    model = Lectura
+    fields = ['medidor', 'fecha_lectura', 'lectura_actual', 'consumo_energetico']
+    template_name = 'gestion/lectura_form.html'
+    success_url = reverse_lazy('lectura_list')
+
+class LecturaUpdateView(UpdateView):
+    model = Lectura
+    fields = ['medidor', 'fecha_lectura', 'lectura_actual', 'consumo_energetico']
+    template_name = 'gestion/lectura_form.html'
+    success_url = reverse_lazy('lectura_list')
+
+class LecturaDeleteView(DeleteView):
+    model = Lectura
+    template_name = 'gestion/lectura_confirm_delete.html'
+    success_url = reverse_lazy('lectura_list')
+
+# ====== Boletas ======
+class BoletaListView(ListView):
+    model = Boleta
+    template_name = 'gestion/boleta_list.html'
+    context_object_name = 'boletas'
+
+class BoletaCreateView(CreateView):
+    model = Boleta
+    fields = ['lectura', 'fecha_emision', 'fecha_vencimiento', 'monto_total', 'estado']
+    template_name = 'gestion/boleta_form.html'
+    success_url = reverse_lazy('boleta_list')
+
+class BoletaUpdateView(UpdateView):
+    model = Boleta
+    fields = ['lectura', 'fecha_emision', 'fecha_vencimiento', 'monto_total', 'estado']
+    template_name = 'gestion/boleta_form.html'
+    success_url = reverse_lazy('boleta_list')
+
+class BoletaDeleteView(DeleteView):
+    model = Boleta
+    template_name = 'gestion/boleta_confirm_delete.html'
+    success_url = reverse_lazy('boleta_list')

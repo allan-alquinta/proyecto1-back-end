@@ -1,0 +1,11 @@
+{% extends "layout/base.html" %}
+{% block title %}Eliminar Lectura{% endblock %}
+{% block content %}
+<h2>¿Seguro que deseas eliminar esta lectura?</h2>
+<p>Medidor: {{ object.medidor }} — Fecha: {{ object.fecha_lectura }}</p>
+<form method="post">
+  {% csrf_token %}
+  <button type="submit">Sí, eliminar</button>
+  <a href="{% url 'lectura_list' %}">Cancelar</a>
+</form>
+{% endblock %}

@@ -28,4 +28,16 @@ urlpatterns = [
     path('medidores/nuevo/', views.MedidorCreateView.as_view(), name='medidor_create'),
     path('medidores/<int:pk>/editar/', views.MedidorUpdateView.as_view(), name='medidor_update'),
     path('medidores/<int:pk>/eliminar/', views.MedidorDeleteView.as_view(), name='medidor_delete'),
+
+    # ---- Lecturas ----
+    path('lecturas/', views.LecturaListView.as_view(), name='lectura_list'),
+    path('lecturas/nueva/', views.LecturaCreateView.as_view(), name='lectura_create'),
+    path('lecturas/<int:pk>/editar/', views.LecturaUpdateView.as_view(), name='lectura_update'),
+    path('lecturas/<int:pk>/eliminar/', views.LecturaDeleteView.as_view(), name='lectura_delete'),
+
+    # ---- Boletas ----
+    path('boletas/', views.BoletaListView.as_view(), name='boleta_list'),
+    path('boletas/nueva/', views.BoletaCreateView.as_view(), name='boleta_create'),
+    path('boletas/<int:pk>/editar/', views.BoletaUpdateView.as_view(), name='boleta_update'),
+    path('boletas/<int:pk>/eliminar/', views.BoletaDeleteView.as_view(), name='boleta_delete'),
 ]
