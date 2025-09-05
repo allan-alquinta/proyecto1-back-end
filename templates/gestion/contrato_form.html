@@ -1,0 +1,11 @@
+{% extends "layout/base.html" %}
+{% block title %}Contrato{% endblock %}
+{% block content %}
+<h2>Contrato</h2>
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Guardar</button>
+  <a href="{% url 'contrato_list' %}">Volver</a>
+</form>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends "layout/base.html" %}
+{% block title %}Eliminar Contrato{% endblock %}
+{% block content %}
+<h2>¿Seguro que deseas eliminar este contrato?</h2>
+<p>N° {{ object.numero_contrato }} — Cliente: {{ object.cliente }}</p>
+<form method="post">
+  {% csrf_token %}
+  <button type="submit">Sí, eliminar</button>
+  <a href="{% url 'contrato_list' %}">Cancelar</a>
+</form>
+{% endblock %}

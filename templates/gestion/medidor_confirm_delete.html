@@ -1,0 +1,11 @@
+{% extends "layout/base.html" %}
+{% block title %}Eliminar Medidor{% endblock %}
+{% block content %}
+<h2>¿Seguro que deseas eliminar este medidor?</h2>
+<p>N° {{ object.numero_medidor }} — Contrato: {{ object.contrato }}</p>
+<form method="post">
+  {% csrf_token %}
+  <button type="submit">Sí, eliminar</button>
+  <a href="{% url 'medidor_list' %}">Cancelar</a>
+</form>
+{% endblock %}

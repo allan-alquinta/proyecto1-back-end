@@ -1,0 +1,25 @@
+{% extends "layout/base.html" %}
+{% block title %}Medidores{% endblock %}
+{% block content %}
+<h2>Medidores</h2>
+<p><a href="{% url 'medidor_create' %}">➕ Nuevo medidor</a></p>
+<table border="1" cellpadding="6">
+  <tr>
+    <th>N° Medidor</th><th>Ubicación</th><th>Estado</th><th>Contrato</th><th>Acciones</th>
+  </tr>
+  {% for m in medidores %}
+    <tr>
+      <td>{{ m.numero_medidor }}</td>
+      <td>{{ m.ubicacion }}</td>
+      <td>{{ m.estado_medidor }}</td>
+      <td>{{ m.contrato }}</td>
+      <td>
+        <a href="{% url 'medidor_update' m.id %}">Editar</a> |
+        <a href="{% url 'medidor_delete' m.id %}">Eliminar</a>
+      </td>
+    </tr>
+  {% empty %}
+    <tr><td colspan="5">Sin registros.</td></tr>
+  {% endfor %}
+</table>
+{% endblock %}
