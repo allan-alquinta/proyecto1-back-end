@@ -1,0 +1,22 @@
+{% extends "layout/base.html" %}
+{% block title %}Notificaciones{% endblock %}
+{% block content %}
+<h2>Notificaciones</h2>
+<p><a href="{% url 'notificacion_create' %}">➕ Nueva notificación</a></p>
+<table border="1" cellpadding="6">
+  <tr><th>Tipo</th><th>Mensaje</th><th>Fecha</th><th>Acciones</th></tr>
+  {% for n in notificaciones %}
+    <tr>
+      <td>{{ n.get_tipo_display }}</td>
+      <td>{{ n.mensaje }}</td>
+      <td>{{ n.fecha }}</td>
+      <td>
+        <a href="{% url 'notificacion_update' n.id %}">Editar</a> |
+        <a href="{% url 'notificacion_delete' n.id %}">Eliminar</a>
+      </td>
+    </tr>
+  {% empty %}
+    <tr><td colspan="4">Sin registros.</td></tr>
+  {% endfor %}
+</table>
+{% endblock %}

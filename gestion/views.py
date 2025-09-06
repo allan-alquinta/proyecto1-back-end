@@ -2,7 +2,7 @@ from django.views.generic import TemplateView, ListView, CreateView, UpdateView,
 from django.urls import reverse_lazy
 from .models import (
     Cliente, Tarifa, Contrato, Medidor,
-    Lectura, Boleta
+    Lectura, Boleta, Pago, Notificacion
 )
 
 class HomeView(TemplateView):
@@ -145,3 +145,49 @@ class BoletaDeleteView(DeleteView):
     model = Boleta
     template_name = 'gestion/boleta_confirm_delete.html'
     success_url = reverse_lazy('boleta_list')
+
+# ====== Pagos ======
+class PagoListView(ListView):
+    model = Pago
+    template_name = 'gestion/pago_list.html'
+    context_object_name = 'pagos'
+
+class PagoCreateView(CreateView):
+    model = Pago
+    fields = ['boleta', 'fecha_pago', 'metodo_pago', 'numero_referencia', 'estado_pago']
+    template_name = 'gestion/pago_form.html'
+    success_url = reverse_lazy('pago_list')
+
+class PagoUpdateView(UpdateView):
+    model = Pago
+    fields = ['boleta', 'fecha_pago', 'metodo_pago', 'numero_referencia', 'estado_pago']
+    template_name = 'gestion/pago_form.html'
+    success_url = reverse_lazy('pago_list')
+
+class PagoDeleteView(DeleteView):
+    model = Pago
+    template_name = 'gestion/pago_confirm_delete.html'
+    success_url = reverse_lazy('pago_list')
+
+# ====== Notificaciones ======
+class NotificacionListView(ListView):
+    model = Notificacion
+    template_name = 'gestion/notificacion_list.html'
+    context_object_name = 'notificaciones'
+
+class NotificacionCreateView(CreateView):
+    model = Notificacion
+    fields = ['tipo', 'mensaje']
+    template_name = 'gestion/notificacion_form.html'
+    success_url = reverse_lazy('notificacion_list')
+
+class NotificacionUpdateView(UpdateView):
+    model = Notificacion
+    fields = ['tipo', 'mensaje']
+    template_name = 'gestion/notificacion_form.html'
+    success_url = reverse_lazy('notificacion_list')
+
+class NotificacionDeleteView(DeleteView):
+    model = Notificacion
+    template_name = 'gestion/notificacion_confirm_delete.html'
+    success_url = reverse_lazy('notificacion_list')

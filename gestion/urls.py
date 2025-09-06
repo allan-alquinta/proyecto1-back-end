@@ -40,4 +40,16 @@ urlpatterns = [
     path('boletas/nueva/', views.BoletaCreateView.as_view(), name='boleta_create'),
     path('boletas/<int:pk>/editar/', views.BoletaUpdateView.as_view(), name='boleta_update'),
     path('boletas/<int:pk>/eliminar/', views.BoletaDeleteView.as_view(), name='boleta_delete'),
+
+    # ---- Pagos ----
+    path('pagos/', views.PagoListView.as_view(), name='pago_list'),
+    path('pagos/nuevo/', views.PagoCreateView.as_view(), name='pago_create'),
+    path('pagos/<int:pk>/editar/', views.PagoUpdateView.as_view(), name='pago_update'),
+    path('pagos/<int:pk>/eliminar/', views.PagoDeleteView.as_view(), name='pago_delete'),
+
+    # ---- Notificaciones ----
+    path('notificaciones/', views.NotificacionListView.as_view(), name='notificacion_list'),
+    path('notificaciones/nueva/', views.NotificacionCreateView.as_view(), name='notificacion_create'),
+    path('notificaciones/<int:pk>/editar/', views.NotificacionUpdateView.as_view(), name='notificacion_update'),
+    path('notificaciones/<int:pk>/eliminar/', views.NotificacionDeleteView.as_view(), name='notificacion_delete'),
 ]

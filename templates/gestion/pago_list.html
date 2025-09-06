@@ -1,0 +1,24 @@
+{% extends "layout/base.html" %}
+{% block title %}Pagos{% endblock %}
+{% block content %}
+<h2>Pagos</h2>
+<p><a href="{% url 'pago_create' %}">➕ Nuevo pago</a></p>
+<table border="1" cellpadding="6">
+  <tr><th>Boleta</th><th>Fecha</th><th>Método</th><th>Referencia</th><th>Estado</th><th>Acciones</th></tr>
+  {% for p in pagos %}
+    <tr>
+      <td>{{ p.boleta }}</td>
+      <td>{{ p.fecha_pago }}</td>
+      <td>{{ p.metodo_pago }}</td>
+      <td>{{ p.numero_referencia }}</td>
+      <td>{{ p.estado_pago }}</td>
+      <td>
+        <a href="{% url 'pago_update' p.id %}">Editar</a> |
+        <a href="{% url 'pago_delete' p.id %}">Eliminar</a>
+      </td>
+    </tr>
+  {% empty %}
+    <tr><td colspan="6">Sin registros.</td></tr>
+  {% endfor %}
+</table>
+{% endblock %}

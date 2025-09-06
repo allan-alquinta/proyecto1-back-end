@@ -1,0 +1,11 @@
+{% extends "layout/base.html" %}
+{% block title %}Eliminar Pago{% endblock %}
+{% block content %}
+<h2>¿Seguro que deseas eliminar este pago?</h2>
+<p>Boleta: {{ object.boleta }} — Estado: {{ object.estado_pago }}</p>
+<form method="post">
+  {% csrf_token %}
+  <button type="submit">Sí, eliminar</button>
+  <a href="{% url 'pago_list' %}">Cancelar</a>
+</form>
+{% endblock %}

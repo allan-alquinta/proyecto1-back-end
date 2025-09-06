@@ -1,0 +1,11 @@
+{% extends "layout/base.html" %}
+{% block title %}Eliminar Notificación{% endblock %}
+{% block content %}
+<h2>¿Seguro que deseas eliminar esta notificación?</h2>
+<p>Tipo: {{ object.get_tipo_display }} — Mensaje: {{ object.mensaje }}</p>
+<form method="post">
+  {% csrf_token %}
+  <button type="submit">Sí, eliminar</button>
+  <a href="{% url 'notificacion_list' %}">Cancelar</a>
+</form>
+{% endblock %}

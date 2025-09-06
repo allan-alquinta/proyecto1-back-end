@@ -1,0 +1,11 @@
+{% extends "layout/base.html" %}
+{% block title %}Pago{% endblock %}
+{% block content %}
+<h2>Pago</h2>
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Guardar</button>
+  <a href="{% url 'pago_list' %}">Volver</a>
+</form>
+{% endblock %}
